@@ -1,0 +1,45 @@
+
+Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a “#” character. The characters should form a chess board.
+Passing this string to console.log should show something like this:
+#### ####
+#### ####
+#### ####
+#### ####
+When you have a program that generates this pattern, de ne a variable size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
+
+var env = {
+  emptyChar:' ',
+  hash:'#',
+  noOfRow:2,
+  noOfCol:2
+};
+
+
+function getRow(flag){
+  if(flag == 'even'){
+    var fEle = env.emptyChar;
+  }else{
+    var fEle = env.hash;
+  }
+
+  var result = '';
+  for(var i=1;i<=env.noOfCol;i++){
+    result = result + fEle;
+    if(fEle==env.emptyChar){
+      fEle=env.hash;
+    }else{
+      fEle=env.emptyChar;
+    }
+  }
+  return result;
+};
+
+var evenRow = getRow('even');
+var oddRow = getRow('odd');
+
+for(var i=1;i<=env.noOfRow;i++){
+  if(i%2==0)//for even rows
+    console.log(evenRow);
+  else
+    console.log(oddRow);
+}
